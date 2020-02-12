@@ -2,9 +2,7 @@
 
 向指定地址转账。
 
-> 执行此命令前需要在 Neo-CLI 节点中打开钱包。
->
-> 此方法由插件提供，需要安装 [RpcWallet](https://github.com/neo-project/neo-plugins/releases) 插件才可以调用。
+> 执行此命令前需要先调用`openwallet`方法打开钱包。
 
 
 
@@ -12,7 +10,7 @@
 {
   "jsonrpc": "2.0",
   "method": "sendtoaddress",
-  "params": [asset_id,address,value, fee, change_address],
+  "params": [asset_id,address,value],
   "id": 1
 }
 ```
@@ -24,8 +22,6 @@
 * asset_id：资产 ID（资产标识符），即NEP-5合约的scripthash。
 * address：收款地址。
 * value：转账金额。
-* fee：可选参数，设置手续费可以提升网络处理该笔转账的优先级，默认为 0，最小值可设为 0.00000001。
-* change_address：找零地址，可选参数，默认为钱包中第一个标准地址
 
 
 

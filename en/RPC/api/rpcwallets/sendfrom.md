@@ -2,16 +2,15 @@
 
 Transfer from the specified address to the destination address.
 
-> - You need to open the wallet in the NEO-CLI node before executing this command.
-> - This method is provided by the plugin [RpcWallet](https://github.com/neo-project/neo-plugins/releases) . You need to install the plugin before you can invoke the method.
+> You should call the `openwallet` method to open the wallet first.
 
 
 
 ```json
 {
   "jsonrpc": "2.0",
-  "method": "sendtoaddress",
-  "params": [asset_id, from, to, value,fee, change_address],
+  "method": "sendfrom",
+  "params": [asset_id, from, to, value],
   "id": 1
 }
 ```
@@ -24,8 +23,6 @@ Transfer from the specified address to the destination address.
 * from: transfering address.
 * to: destination address.
 * value：Transfer amount
-* fee：Optional parameter. Paying the handling fee helps elevate the priority of the network to process the transfer. It defaults to 0, and can be set to a minimum of 0.00000001.
-* change_address：Change address, optional parameter, default is the first standard address in the wallet.
 
 
 

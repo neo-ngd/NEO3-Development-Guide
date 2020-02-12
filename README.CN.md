@@ -1,8 +1,15 @@
 ﻿<div align="center">  
 <h1>NEO3 开发指南</h1>
-<img src="images/neo-rebranding.png" alt="NEO3 Development Guide" height="150">
+<p align="center">
+  <a href="https://neo.org/">
+      <img
+      src="https://neo3.azureedge.net/images/logo%20files-dark.svg"
+      width="250px" alt="neo-logo">
+  </a>
+</p>
 <p>NEO3 开发指南， 协助NEO3早期基础工具开发者完成NEO3底层建设</p>
 </div>
+
 
 ## 目录 
 - [钱包](cn/钱包)
@@ -49,26 +56,31 @@
     - 返回结果：[getblock](cn/RPC/api/getblock.md)，[getblockheader](cn/RPC/api/getblockheader.md)，[getrawtransaction](cn/RPC/api/getrawtransaction.md)，[getversion](cn/RPC/api/getversion.md)，[getcontractstate](cn/RPC/api/getcontractstate.md)
 
 - 删除
-    - `claimgas`, `dumpprivkey`, `getaccountstate`, `getapplicationlog`, `getassetstate`, `getbalance`, `getclaimable`, `getmetricblocktimestamp`, `getnep5balances`, `getnep5transfers`, `getnewaddress`, `gettxout`, `getunclaimed`, `getunclaimedgas`, `getunspents`, `getwalletheight`, `importprivkey`, `invoke`, `listaddress`, `sendfrom`, `sendtoaddress`, `sendmany` 等API指令。
+    - `claimgas`,  `getaccountstate`, `getassetstate`, `getclaimable`, `getmetricblocktimestamp`, `gettxout`, `getunspents`, `invoke` 等API指令。
 
 
 ### 智能合约
 
 - 新增
-    - [Manifest文件](cn/合约#manifest)：用于描述合约的特征，随avm文件一起部署到Neo区块链。
+    - [Manifest文件](cn/合约#manifest)：用于描述合约的特征，随nef文件一起部署到Neo区块链。
     - [原生合约](cn/合约#原生合约)：不通过虚拟机执行，而直接运行在Neo原生代码中，目前包括：NeoToken，GasToken，以及PolicyToken。
     - [网络资源访问](cn/合约#网路资源访问)： 待补充。
     - [system 触发器](cn/合约#触发器)：用于节点收到新区块后，触发原生合约的执行。
+    - 互操作服务接口：`System.Binary.Serialize`, `System.Binary.Deserialize`, `System.Contract.Create`, `System.Contract.Update`, `System.Contract.Call`, `System.Contract.CallEx`, `System.Contract.IsStandard` 等。
 
 - 更新
     - 降低了合约执行互操作接口所对应的[系统费用](cn/合约#费用)。
 
+- 删除
+    - 互操作服务接口：`Neo.Runtime.GetTrigger`, `Neo.Runtime.CheckWitness`, `Neo.Runtime.Notify`, `Neo.Runtime.Log`, `Neo.Runtime.GetTime`, `Neo.Runtime.Serialize`, `Neo.Runtime.Deserialize`, `Neo.Blockchain.GetHeight`, `Neo.Blockchain.GetHeader`, `Neo.Blockchain.GetBlock`, `Neo.Blockchain.GetTransaction`, `Neo.Blockchain.GetTransactionHeight`, `Neo.Blockchain.GetAccount`, `Neo.Blockchain.GetValidators`, `Neo.Blockchain.GetAsset`, `Neo.Blockchain.GetContract`, `Neo.Header.GetHash`, `Neo.Header.GetVersion`, `Neo.Header.GetPrevHash`, `Neo.Header.GetMerkleRoot`, `Neo.Header.GetTimestamp`, `Neo.Header.GetIndex`,  `Neo.Header.GetConsensusData` 等。
+
 ### 虚拟机
 
 - 新增
-    - [DUPFROMALTSTACKBOTTOM](cn/虚拟机#栈操作)
+    - `PUSHINT`, `JMP_L`, `JMPIF_L`, `JMPIFNOT_L`, `JMPEQ`, `JMPEQ_L`, `JMPNE`, `JMPNE_L`, `JMPGT`, `JMPGT_L`, 
+    `JMPGE`, `JMPGE_L`, `JMPLT`, `JMPLT_L`, `JMPLE`, `JMPLE_L`, `CALL_L`, `CALLA`, `THROWIF`, `CLEAR`, `REVERSE3`, `REVERSE4`, `REVERSEN` 等。
 - 删除
-    - `APPCALL`, `TAILCALL`, `SHA1`, `SHA256`, `HASH160`, `HASH256`, `CHECKSIG`, `VERIFY`, `CHECKMULTISIG`, `CALL_I`, `CALL_E`, `CALL_ED, `CALL_ET`, `CALL_EDT` 等OpCodes。
+    - `PUSHF`, `PUSHBYTES1`, `PUSHBYTES75`, `APPCALL`, `TAILCALL`, `XTUCK`, `XSWAP`, `FROMALTSTACK`, `TOALTSTACK`, `DUPFROMALTSTACK`, `SIZE`, `LTE`, `GTE`, `SHA1`, `SHA256`, `HASH160`, `HASH256`, `CHECKSIG`, `VERIFY`, `CHECKMULTISIG`, `ARRAYSIZE`, `CALL_I`, `CALL_E`, `CALL_ED`, `CALL_ET`, `CALL_EDT`。
 
 
 *点击[此处](README.md)查看README英文版*
